@@ -8,13 +8,7 @@
         v-model="text"
         @enter-submit="addTodo(text)" />
 
-      <ul class="todo-list text-align-left mg-auto mgt-24px">
-        <li
-          v-for="(todo, index) in todos"
-          :key="index">
-          {{ todo }}
-        </li>
-      </ul>
+      <BaseTodoList :todos="todos" />
 
       <button
         @click="addTodo(text)"
@@ -28,11 +22,13 @@
 <script>
 import { ref } from 'vue'
 import BaseFormInput from './components/BaseFormInput'
+import BaseTodoList from './components/BaseTodoList'
 
 export default {
   name: 'App',
   components: {
-    BaseFormInput
+    BaseFormInput,
+    BaseTodoList
   },
   setup () {
     const text = ref('')
@@ -74,7 +70,7 @@ export default {
   max-width: 1024px;
 }
 
-.todo-list {
+.mw-768px {
   max-width: 768px;
 }
 
