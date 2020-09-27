@@ -3,14 +3,10 @@
     <div class="container mg-auto">
       <h1>Todo App</h1>
 
-      <label for="text">
-        Add todo:
-        <input
-          id="text"
-          type="text"
-          v-model="text"
-          @keyup.enter="addTodo(text)">
-      </label>
+      <BaseFormInput
+        label="Add todo:"
+        v-model="text"
+        @enter-submit="addTodo(text)" />
 
       <ul class="todo-list text-align-left mg-auto mgt-24px">
         <li
@@ -31,9 +27,13 @@
 
 <script>
 import { ref } from 'vue'
+import BaseFormInput from './components/BaseFormInput'
 
 export default {
   name: 'App',
+  components: {
+    BaseFormInput
+  },
   setup () {
     const text = ref('')
     const todos = ref([])
