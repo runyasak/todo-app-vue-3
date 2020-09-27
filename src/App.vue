@@ -1,10 +1,52 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <div class="container mg-auto">
+      <h1>Todo App</h1>
+
+      <label for="text">
+        Add todo:
+        <input
+          id="text"
+          type="text"
+          v-model="text"
+          @keyup.enter="addTodo(text)">
+      </label>
+
+      <ul class="todo-list text-align-left mg-auto mgt-24px">
+        <li
+          v-for="(todo, index) in todos"
+          :key="index">
+          {{ todo }}
+        </li>
+      </ul>
+
+      <button
+        @click="addTodo(text)"
+        class="mgt-48px">
+        Add Todo
+      </button>
+    </div>
   </div>
-  <router-view/>
 </template>
+
+<script>
+import { ref } from 'vue'
+
+export default {
+  name: 'App',
+  setup () {
+    const text = ref('')
+    const todos = ref([])
+
+    const addTodo = (value) => {
+      todos.value.push(value)
+      text.value = ''
+    }
+
+    return { text, todos, addTodo }
+  }
+}
+</script>
 
 <style>
 #app {
@@ -26,5 +68,29 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.container {
+  max-width: 1024px;
+}
+
+.todo-list {
+  max-width: 768px;
+}
+
+.mg-auto {
+  margin: auto;
+}
+
+.mgt-24px {
+  margin-top: 24px;
+}
+
+.mgt-48px {
+  margin-top: 48px;
+}
+
+.text-align-left {
+  text-align: left;
 }
 </style>
