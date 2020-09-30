@@ -4,13 +4,13 @@
     <input
       v-bind="$attrs"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
-      @keyup.enter="$emit('enter-submit', $event.target.value)">
+      @input="$emit('update:modelValue', $event.target.value)">
   </label>
 </template>
 
 <script>
 export default {
+  inheritAttrs: false,
   name: 'BaseFormInput',
   props: {
     label: {

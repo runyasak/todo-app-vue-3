@@ -6,7 +6,8 @@
       <BaseFormInput
         label="Add todo:"
         v-model="text"
-        @enter-submit="addTodo(text)" />
+        @keyup.enter="addTodo(text)"
+      />
 
       <BaseTodoList :todos="todos" />
 
