@@ -20,29 +20,19 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
-import BaseFormInput from './components/BaseFormInput'
-import BaseTodoList from './components/BaseTodoList'
 
-export default {
-  name: 'App',
-  components: {
-    BaseFormInput,
-    BaseTodoList
-  },
-  setup () {
-    const text = ref('')
-    const todos = ref([])
+export const text = ref('')
+export const todos = ref([])
 
-    const addTodo = (value) => {
-      todos.value.push(value)
-      text.value = ''
-    }
-
-    return { text, todos, addTodo }
-  }
+export const addTodo = (value) => {
+  todos.value.push(value)
+  text.value = ''
 }
+
+export { default as BaseFormInput } from './components/BaseFormInput'
+export { default as BaseTodoList } from './components/BaseTodoList'
 </script>
 
 <style>
